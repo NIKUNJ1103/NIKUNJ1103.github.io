@@ -18,20 +18,20 @@ Before you begin, ensure that you have the following installed:
 - **mysql**: Dockerfile and configurations for the MySQL database.
 
 ## Dockerfile(Database)
-![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/33.PNG)
+![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/dvs.png)
 
 
 ## Dockerfile(Backend)
-![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/34.PNG)
+![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/bvs.png)
 ## Dockerfile(Frontend)
-![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/35.PNG)
+![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/fvs.png)
 ## Deployment Steps
 0. **Create Network**
    - Navigate to the `project` directory
    - ```bash
      docker network create my-network
      ```
-     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/22.PNG)
+     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/net.png)
 1. **MySQL Database:**
 
    - Navigate to the `mysql` directory.
@@ -40,13 +40,13 @@ Before you begin, ensure that you have the following installed:
      docker build -t mysql-image .
      ```
      
-     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/21.PNG)
+     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/database.png)
      
    - Run the MySQL container:
      ```bash
      docker run --name mysql-container --network=three-tier-network -p 3306:3306 -v mysql-data:/var/lib/mysql -d mysql-image
      ```
-     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/30.PNG)
+     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/netd.png)
    - Access the MySQL container:
      ```bash
      docker exec -it mysql-container /bin/bash
@@ -58,7 +58,6 @@ Before you begin, ensure that you have the following installed:
      CREATE TABLE student (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(40), roll_number INT, class VARCHAR(16));
      CREATE TABLE teacher (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(40), subject VARCHAR(40), class VARCHAR(16));
      ```
-     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/25.PNG)
 2. **Backend Application:**
 
    - Navigate to the `backend` directory.
@@ -66,12 +65,12 @@ Before you begin, ensure that you have the following installed:
      ```bash
      docker build -t backend .
      ```
-     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/26.PNG)
+     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/backend.png)
    - Run the backend container:
      ```bash
      docker run -d -p 3500:3500 --name backend-container --network=three-tier-network backend
      ```
-     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/27.PNG)
+     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/netb.png)
 3. **Frontend Application:**
 
    - Navigate to the `frontend` directory.
@@ -79,16 +78,16 @@ Before you begin, ensure that you have the following installed:
      ```bash
      docker build -t frontend .
      ```
-     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/28.PNG)
+     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/frontend.png)
    - Run the frontend container:
      ```bash
      docker run -d --name frontend-container --network=three-tier-network -p 80:80 frontend
      ```
-     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/29.PNG)
+     ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/netf.png)
 4. **Access the Application:**
 
    Open your favorite browser and visit [http://localhost:80](http://localhost:80). Enjoy exploring the MERN stack application!
-   ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/36.PNG)
+   ![Alt Text](https://raw.githubusercontent.com/NIKUNJ1103/NIKUNJ1103.github.io/master/images/web.png)
 
     
 ## Data Persistence
